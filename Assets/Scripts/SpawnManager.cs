@@ -6,12 +6,14 @@ public class SpawnManager : MonoBehaviour
     private Vector3 _spawnPos;
     private float _startDelay;
     private float _repeatRate;
+    private PlayerController _playerController;
 
     private void Awake()
     {
-        _spawnPos = new Vector3(25, 0, 0);
+        _spawnPos = new Vector3(40, 0, 0);
         _startDelay = 2;
         _repeatRate = 2;
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     private void Start()
@@ -21,6 +23,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        Instantiate(obstaclePrefab, _spawnPos, obstaclePrefab.transform.rotation);
+        if (!_playerController.gameOver)
+            Instantiate(obstaclePrefab, _spawnPos, obstaclePrefab.transform.rotation);
     }
 }
