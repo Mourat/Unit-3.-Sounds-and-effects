@@ -3,13 +3,18 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    private float _speed;
+    [SerializeField] private float speed;
     private PlayerController _playerController;
     private float _leftBound;
 
+    private void Reset()
+    {
+        speed = 30f;
+    }
+
     private void Awake()
     {
-        _speed = 15f;
+        // _speed = 50f;
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _leftBound = -10;
     }
@@ -17,7 +22,7 @@ public class MoveLeft : MonoBehaviour
     private void Update()
     {
         if (!_playerController.gameOver)
-            transform.Translate(Vector3.left * (Time.deltaTime * _speed));
+            transform.Translate(Vector3.left * (Time.deltaTime * speed));
         
         if(transform.position.x < _leftBound && gameObject.CompareTag("Obstacle"))
             Destroy(gameObject);
