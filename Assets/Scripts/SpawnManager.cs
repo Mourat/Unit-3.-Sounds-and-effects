@@ -10,8 +10,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        _spawnPos = new Vector3(40, 0, 0);
-        _startDelay = 2;
+        _spawnPos = new Vector3(35, 0, 0);
+        _startDelay = 1;
         _repeatRate = 2;
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnObstacle", _startDelay, _repeatRate);
     }
 
+    // Spawn obstacle
     private void SpawnObstacle()
     {
         if (!_playerController.gameOver)
