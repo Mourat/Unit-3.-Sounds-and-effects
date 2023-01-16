@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool _isOnGround;
     public bool gameOver;
     private Animator _playerAnim;
+    [SerializeField] private ParticleSystem explosionParticle;
 
     private void Reset()
     {
@@ -51,7 +52,8 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             _playerAnim.SetInteger("DeathType_int", 1);
             _playerAnim.SetBool("Death_b", true);
+            explosionParticle.Play();
         }
-            
     }
+    
 }
