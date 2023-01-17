@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
             _playerAnim.SetInteger("DeathType_int", 1);
             _playerAnim.SetBool("Death_b", true);
             explosionParticle.Play();
+            dirtParticle.Stop();
             _playerAudio.PlayOneShot(crashSound, 1.0f);
         }
     }
